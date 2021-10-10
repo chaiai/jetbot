@@ -44,22 +44,22 @@ sudo apt-get install -y libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip
 sudo apt-get install -y python3-pip
 sudo pip3 install -U pip testresources setuptools numpy==1.16.1 future==0.17.1 mock==3.0.5 h5py==2.9.0 keras_preprocessing==1.0.5 keras_applications==1.0.8 gast==0.2.2 futures protobuf pybind11
 # TF-1.15
-sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v44 'tensorflow<2'
+sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v45 'tensorflow<2'
 
 # Install the pre-built PyTorch pip wheel 
 echo -e "\e[45m Install the pre-built PyTorch pip wheel  \e[0m"
 cd
 wget -N https://nvidia.box.com/shared/static/yr6sjswn25z7oankw8zy1roow9cy5ur1.whl -O torch-1.6.0rc2-cp36-cp36m-linux_aarch64.whl
-sudo apt-get install -y python3-pip libopenblas-base libopenmpi-dev 
+sudo apt-get install -y python3-pip libopenblas-base libopenmpi-dev libavcodec-dev libavformat-dev libswscale-dev
 sudo -H pip3 install Cython
 sudo -H pip3 install numpy torch-1.6.0rc2-cp36-cp36m-linux_aarch64.whl 
 
 # Install torchvision package
 echo -e "\e[45m Install torchvision package \e[0m"
 cd
-git clone https://github.com/pytorch/vision
+git clone --branch release/0.7.0 https://github.com/pytorch/vision
 cd vision
-#git checkout v0.4.0
+export BUILD_VERSION=0.7.0
 sudo -H python3 setup.py install
 
 # Install torch2trt
@@ -76,7 +76,7 @@ sudo python3 -m pip install git+https://github.com/ipython/traitlets@dead2b8cdde
 # Install jupyter lab
 echo -e "\e[48;5;172m Install Jupyter Lab \e[0m"
 sudo apt install -y curl
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt install -y nodejs libffi-dev 
 sudo -H pip3 install jupyter jupyterlab
 sudo -H jupyter labextension install @jupyter-widgets/jupyterlab-manager
