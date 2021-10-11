@@ -13,6 +13,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 sudo -v
 while true; do sudo -n true; sleep 120; kill -0 "$$" || exit; done 2>/dev/null &
 
+# Turn on jetson_clocks
+sudo jetson_clocks
+
 # Enable i2c permissions
 echo -e "\e[100m Enable i2c permissions \e[0m"
 sudo usermod -aG i2c $USER
