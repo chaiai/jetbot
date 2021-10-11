@@ -60,7 +60,7 @@ sudo -H pip3 install numpy torch-1.6.0rc2-cp36-cp36m-linux_aarch64.whl
 # Install torchvision package
 echo -e "\e[45m Install torchvision package \e[0m"
 cd
-git clone --branch release/0.7.0 https://github.com/pytorch/vision
+git clone --branch release/0.7 https://github.com/pytorch/vision
 cd vision
 export BUILD_VERSION=0.7.0
 sudo -H python3 setup.py install
