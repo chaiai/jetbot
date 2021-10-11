@@ -100,7 +100,8 @@ sudo jupyter lab build
 
 # Install bokeh
 sudo pip3 install bokeh
-sudo jupyter labextension install @bokeh/jupyter_bokeh
+# Failing to build, not needed?
+# sudo jupyter labextension install @bokeh/jupyter_bokeh
 
 
 # install jetbot python module
