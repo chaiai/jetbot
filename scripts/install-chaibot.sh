@@ -33,7 +33,7 @@ echo -e "\e[104m Install pip and some python dependencies \e[0m"
 sudo apt-get update
 sudo apt install -y python3-pip python3-pil
 sudo -H pip3 install Cython
-sudo -H pip3 install --upgrade numpy
+sudo -H pip3 install --upgrade numpy==1.16.1
 
 # Install jtop
 echo -e "\e[100m Install jtop \e[0m"
