@@ -1,6 +1,8 @@
-# JetBot
+# ChaiBot
 
-<img src="../..//wiki/images/jetson-jetbot-illustration_1600x1260.png" height="256">
+Basic modifications are to the <code>robot.py</code> and <code>stats.py</code> to set the Nano to use the other I2C bus for the motor driver instead of the same bus as the display. Modifications to the display message as well.
+
+# JetBot
 
 JetBot is an open-source robot based on NVIDIA Jetson Nano that is
 
