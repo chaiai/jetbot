@@ -49,32 +49,34 @@ sudo pip3 install -U pip testresources setuptools numpy==1.16.1 future==0.17.1 m
 # TF-1.15
 sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v45 'tensorflow<2'
 
-# Install the pre-built PyTorch pip wheel 
+# Install the pre-built PyTorch pip wheel (1.10.0 vs. 1.6.0)
 echo -e "\e[45m Install the pre-built PyTorch pip wheel  \e[0m"
 cd
-wget -N https://nvidia.box.com/shared/static/yr6sjswn25z7oankw8zy1roow9cy5ur1.whl -O torch-1.6.0rc2-cp36-cp36m-linux_aarch64.whl
+wget -N https://nvidia.box.com/shared/static/fjtbno0vpo676a25cgvuqc1wty0fkkg6.whl -O torch-1.10.0-cp36-cp36m-linux_aarch64.whl
+# wget -N https://nvidia.box.com/shared/static/yr6sjswn25z7oankw8zy1roow9cy5ur1.whl -O torch-1.6.0rc2-cp36-cp36m-linux_aarch64.whl
 sudo apt-get install -y python3-pip libopenblas-base libopenmpi-dev libavcodec-dev libavformat-dev libswscale-dev
 sudo -H pip3 install Cython
-sudo -H pip3 install numpy torch-1.6.0rc2-cp36-cp36m-linux_aarch64.whl 
+# sudo -H pip3 install numpy torch-1.6.0rc2-cp36-cp36m-linux_aarch64.whl 
+sudo -H pip3 install numpy torch-1.10.0-cp36-cp36m-linux_aarch64.whl
 
 # Install torchvision package
 echo -e "\e[45m Install torchvision package \e[0m"
 cd
-git clone --branch release/0.7 https://github.com/pytorch/vision
-cd vision
-export BUILD_VERSION=0.7.0
+git clone --branch release/0.11 https://github.com/pytorch/vision torchvision
+cd torchvision
+export BUILD_VERSION=0.11.0
 sudo -H python3 setup.py install
 
 # Install torch2trt
 cd $HOME
 git clone https://github.com/NVIDIA-AI-IOT/torch2trt
 cd torch2trt
-sudo python3 setup.py install
+sudo -H python3 setup.py install
 
 # Install traitlets (master, to support the unlink() method)
 echo -e "\e[48;5;172m Install traitlets \e[0m"
 #sudo python3 -m pip install git+https://github.com/ipython/traitlets@master
-sudo python3 -m pip install git+https://github.com/ipython/traitlets@dead2b8cdde5913572254cf6dc70b5a6065b86f8
+sudo -H python3 -m pip install git+https://github.com/ipython/traitlets@dead2b8cdde5913572254cf6dc70b5a6065b86f8
 
 # Install jupyter lab
 echo -e "\e[48;5;172m Install Jupyter Lab \e[0m"
@@ -102,7 +104,7 @@ sudo jupyter labextension install js
 sudo jupyter lab build
 
 # Install bokeh
-sudo pip3 install bokeh
+sudo -H pip3 install bokeh
 # Failing to build, not needed?
 # sudo jupyter labextension install @bokeh/jupyter_bokeh
 
