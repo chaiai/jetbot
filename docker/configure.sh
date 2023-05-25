@@ -9,16 +9,17 @@ L4T_REVISION=$(echo $L4T_VERSION_STRING | cut -f 2 -d ',' | grep -Po '(?<=REVISI
 
 export L4T_VERSION="$L4T_RELEASE.$L4T_REVISION"
 
-if [[ $L4T_VERSION = "32.4.3" ]]
-then
-	JETBOT_BASE_IMAGE=nvcr.io/nvidia/l4t-pytorch:r32.4.3-pth1.6-py3
-elif [[ "$L4T_VERSION" == "32.4.4" ]]
-then
-	JETBOT_BASE_IMAGE=nvcr.io/nvidia/l4t-pytorch:r32.4.4-pth1.6-py3
-else
-	echo "JETBOT_BASE_IMAGE not found for ${L4T_VERSION}.  Please manually set the JETBOT_BASE_IMAGE environment variable. (ie: export JETBOT_BASE_IMAGE=...)"
-fi
+#if [[ $L4T_VERSION = "32.4.3" ]]
+#then
+#	JETBOT_BASE_IMAGE=nvcr.io/nvidia/l4t-pytorch:r32.4.3-pth1.6-py3
+#elif [[ "$L4T_VERSION" == "32.4.4" ]]
+#then
+#	JETBOT_BASE_IMAGE=nvcr.io/nvidia/l4t-pytorch:r32.4.4-pth1.6-py3
+#else
+#	echo "JETBOT_BASE_IMAGE not found for ${L4T_VERSION}.  Please manually set the JETBOT_BASE_IMAGE environment variable. (ie: export JETBOT_BASE_IMAGE=...)"
+#fi
 
+export JETBOT_BASE_IMAGE=nvcr.io/nvidia/l4t-pytorch:r32.6.1-pth1.9-py3
 export JETBOT_DOCKER_REMOTE=jetbot
 
 ./set_nvidia_runtime.sh
